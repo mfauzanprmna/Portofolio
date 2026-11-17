@@ -83,7 +83,7 @@ img {
 .nav-links a,
 .nav-cta {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   transition: color .2s ease;
 }
@@ -121,7 +121,7 @@ img {
 .skill-label,
 .project-type {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .13em;
 }
@@ -199,7 +199,7 @@ img {
   flex-wrap: wrap;
   gap: 8px 23px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .hero-meta span::before {
@@ -255,7 +255,7 @@ img {
   border-radius: 7px;
   background: var(--surface);
   box-shadow: 0 12px 28px rgba(25, 35, 30, .08);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -318,7 +318,7 @@ img {
   display: block;
   margin-bottom: 10px;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -329,13 +329,13 @@ img {
 
 .quick-facts strong {
   color: var(--text);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .quick-facts small {
   margin-top: 2px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .section-heading-row {
@@ -349,7 +349,7 @@ img {
 .section-heading-row > p {
   max-width: 390px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .timeline {
@@ -366,7 +366,7 @@ img {
 
 .timeline-date {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .08em;
 }
@@ -377,7 +377,7 @@ img {
 
 .role {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -391,7 +391,7 @@ img {
 .timeline ul {
   list-style: none;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .timeline li {
@@ -479,7 +479,7 @@ img {
 
 .project-type {
   color: var(--accent);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .project-body h3 {
@@ -491,7 +491,7 @@ img {
 .project-body > p:not(.project-type) {
   min-height: 42px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .tags {
@@ -506,14 +506,14 @@ img {
   border: 1px solid var(--line);
   border-radius: 99px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .project-link,
 .mini-grid a {
   display: inline-block;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -537,7 +537,7 @@ img {
   padding-bottom: 11px;
   border-bottom: 1px solid var(--line);
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .12em;
 }
@@ -559,8 +559,10 @@ img {
 }
 
 .mini-project-image {
-  display: block;
-  height: 140px;
+  display: flex;
+  height: 160px;
+  align-items: center;
+  justify-content: center;
   margin: -22px -22px 14px;
   overflow: hidden;
   background: #e8eee8;
@@ -569,8 +571,8 @@ img {
 .mini-project-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
   transition: transform .35s ease;
 }
 
@@ -580,18 +582,18 @@ img {
 
 .mini-number {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
 }
 
 .mini-grid h3 {
   margin: 13px 0 7px;
-  font: 600 18px "Space Grotesk", sans-serif;
+  font: 600 20px "Space Grotesk", sans-serif;
 }
 
 .mini-grid p:not(.mini-number) {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .mini-grid .tags {
@@ -607,7 +609,7 @@ img {
 .skill-label {
   margin-bottom: 11px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .skill-list {
@@ -622,7 +624,7 @@ img {
   border-radius: 6px;
   background: rgba(255, 255, 255, .55);
   color: var(--text);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .skill-list.soft span {
@@ -633,7 +635,7 @@ img {
   max-width: 370px;
   margin-top: 17px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .education-grid {
@@ -652,7 +654,7 @@ img {
 .education-grid span,
 .org-row > div > span {
   color: var(--accent);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .12em;
 }
@@ -664,14 +666,14 @@ img {
 
 .education-grid p {
   color: var(--text);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .education-grid small {
   display: block;
   margin-top: 10px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .org-row {
@@ -692,7 +694,7 @@ img {
 
 .org-row p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .org-row strong {
@@ -720,7 +722,7 @@ img {
 .contact-inner > p:not(.eyebrow) {
   max-width: 510px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .contact-email {
@@ -740,7 +742,7 @@ img {
   flex-wrap: wrap;
   gap: 8px 22px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .contact-links a:hover {
@@ -754,7 +756,7 @@ footer {
   padding: 22px max(32px, calc((100vw - var(--max)) / 2));
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 
 @media (max-width: 900px) {
@@ -901,7 +903,7 @@ footer {
   }
 
   .eyebrow {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .hero h1 {
