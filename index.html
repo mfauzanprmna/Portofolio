@@ -1,1038 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Muhammad Fauzan Permana - Web Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #2563eb;
-            --primary-light: #eff6ff;
-            --text: #111827;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --bg: #ffffff;
-            --bg-section: #f9fafb;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.6;
-        }
-
-        /* NAV */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: #fff;
-            border-bottom: 1px solid var(--border);
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 60px;
-        }
-
-        .nav-logo {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* LAYOUT */
-        .container {
-            max-width: 90%;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        section:nth-child(even) {
-            background: var(--bg-section);
-        }
-
-        /* HERO */
-        #home {
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-image {
-            flex-shrink: 0;
-        }
-
-        .hero-image img {
-            width: 320px;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-inner {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-
-            .hero-image img {
-                width: 220px;
-                height: 220px;
-            }
-        }
-
-        .hero-greeting {
-            font-size: 0.875rem;
-            color: var(--primary);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-name {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 0.75rem;
-        }
-
-        .hero-role {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            max-width: 480px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.6rem 1.4rem;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-        }
-
-        .btn-secondary {
-            background: #fff;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* SECTION HEADER */
-        .section-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.4rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-        }
-
-        .about-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            margin-top: 1.2rem;
-        }
-
-        .about-info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .about-info-item a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .about-info-item a:hover {
-            text-decoration: underline;
-        }
-
-        .info-label {
-            font-weight: 500;
-            color: var(--text);
-            min-width: 60px;
-        }
-
-        .stat-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .stat-box {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.2rem;
-            text-align: center;
-        }
-
-        .stat-num {
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            margin-top: 0.2rem;
-        }
-
-        /* EXPERIENCE */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 2rem;
-            padding: 0 0 2.5rem 0;
-            position: relative;
-        }
-
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 159px;
-            top: 0.5rem;
-            bottom: 0;
-            width: 1px;
-            background: var(--border);
-        }
-
-        .timeline-left {
-            padding-top: 0.1rem;
-        }
-
-        .timeline-period {
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        .timeline-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--primary);
-            margin: 0.4rem 0 0 0;
-        }
-
-        .timeline-right {}
-
-        .exp-company {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.1rem;
-        }
-
-        .exp-role {
-            font-size: 0.85rem;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
-
-        .exp-desc {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .exp-desc li {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .exp-desc li::before {
-            content: '·';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-size: 1.2rem;
-            line-height: 1.3;
-        }
-
-        .new-tag {
-            display: inline-block;
-            font-size: 0.65rem;
-            font-weight: 600;
-            background: #dcfce7;
-            color: #166534;
-            padding: 0.15rem 0.5rem;
-            border-radius: 100px;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-        }
-
-        /* PROJECTS */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .project-card {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.4rem;
-            transition: box-shadow 0.2s, border-color 0.2s;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border-color: #cbd5e1;
-        }
-
-        .project-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-desc {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.55;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-bottom: 0.9rem;
-        }
-
-        .tag {
-            font-size: 0.7rem;
-            font-weight: 500;
-            background: var(--primary-light);
-            color: var(--primary);
-            padding: 0.2rem 0.55rem;
-            border-radius: 4px;
-        }
-
-        .project-link {
-            font-size: 0.8rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
-        }
-
-        /* SKILLS */
-        .skills-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .skill-group-label {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 1.2rem;
-        }
-
-        .skill-item {
-            margin-bottom: 1rem;
-        }
-
-        .skill-top {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .skill-pct {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-        }
-
-        .skill-bar {
-            height: 4px;
-            background: var(--border);
-            border-radius: 100px;
-            overflow: hidden;
-        }
-
-        .skill-fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 100px;
-        }
-
-        .soft-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .soft-tag {
-            font-size: 0.8rem;
-            background: var(--bg-section);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.75rem;
-            border-radius: 6px;
-        }
-
-        .lang-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .lang-item {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .lang-item span {
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        /* EDUCATION */
-        .edu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-        }
-
-        .edu-card {
-            background: #fff;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.4rem;
-        }
-
-        .edu-period {
-            font-size: 0.78rem;
-            color: var(--primary);
-            font-weight: 500;
-            margin-bottom: 0.4rem;
-        }
-
-        .edu-school {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .edu-major {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-        }
-
-        .edu-note {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 0.6rem;
-        }
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2.5rem 0;
-            text-align: center;
-        }
-
-        .footer-name {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .footer-sub {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            font-size: 0.83rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-copy {
-            margin-top: 1.5rem;
-            font-size: 0.75rem;
-            color: #d1d5db;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 700px) {
-            .nav-links {
-                display: none;
-            }
-
-            .about-grid,
-            .skills-layout,
-            .edu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 0.25rem;
-            }
-
-            .timeline-item::after {
-                display: none;
-            }
-
-            .timeline-dot {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muhammad Fauzan Permana — pengembang web dengan pengalaman membangun aplikasi web untuk kebutuhan perusahaan, sistem akademik, dan proyek penelitian.">
+  <title>Muhammad Fauzan Permana — Pengembang Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="#home" class="brand">MF<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#projects">Proyek</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#education">Pendidikan</a>
+    </div>
+    <a class="nav-cta" href="#contact">Kontak <span aria-hidden="true">↗</span></a>
+  </nav>
 
-    <nav>
-        <div class="nav-logo">Muhammad Fauzan Permana</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-        </ul>
-    </nav>
-
-    <!-- HERO -->
-    <section id="home">
-        <div class="container">
-            <div class="hero-inner">
-                <!-- Kiri -->
-                <div class="hero-content">
-                    <div class="hero-greeting">Hello, I'm</div>
-                    <h1 class="hero-name">Muhammad Fauzan Permana</h1>
-                    <p class="hero-role">Web Developer</p>
-                    <p class="hero-desc">
-                        Practical programmer with hands-on experience in web application development.
-                        Focused on building reliable, maintainable systems using PHP, Laravel, JavaScript, and Python.
-                    </p>
-
-                    <div class="hero-btns">
-                        <a href="mailto:mfauzanprmna@gmail.com" class="btn btn-primary">Get in Touch</a>
-                        <a href="#projects" class="btn btn-secondary">View Projects</a>
-                    </div>
-                </div>
-
-                <!-- Kanan -->
-                <div class="hero-image">
-                    <img src="img/7.jpg" alt="Muhammad Fauzan Permana">
-                </div>
-            </div>
+  <main>
+    <section id="home" class="hero section-shell">
+      <div class="hero-copy">
+        <h1>Halo, saya Fauzan.<br><span>Membangun solusi web yang bermanfaat.</span></h1>
+        <p class="hero-lead">Pengembang web dengan pengalaman membangun aplikasi web untuk kebutuhan internal perusahaan, sistem akademik, dan proyek penelitian. Terbiasa menggunakan PHP, Laravel, JavaScript, dan CodeIgniter.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Lihat proyek <span aria-hidden="true">↓</span></a>
+          <a class="button button-ghost" href="https://github.com/mfauzanprmna" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="hero-meta">
+          <span>Sarjana Terapan Komputer · PNJ</span>
+          <span>Jawa Barat, Indonesia</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="portrait-frame">
+          <img src="img/5.png" alt="Foto Muhammad Fauzan Permana">
+          <div class="portrait-note"><span class="status-dot"></span> PHP · Laravel · CodeIgniter</div>
+        </div>
+      </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">About Me</div>
-                <h2 class="section-title">A bit about myself</h2>
-            </div>
-            <div class="about-grid">
-                <div>
-                    <div class="about-text">
-                        <p>Hi, I'm Fauzan, a web developer based in Depok, Indonesia, currently studying Informatics
-                            Engineering at the State Polytechnic of Jakarta (PNJ).</p>
-                        <p>I have hands-on experience contributing to internal web projects at multiple companies,
-                            combining a grounded approach with strong technical skills in PHP, JavaScript, Python, and
-                            C++.</p>
-                        <p>I focus on building reliable, maintainable systems while continuously learning and adapting
-                            to new technologies to deliver scalable and effective software solutions.</p>
-                        <div class="about-info">
-                            <div class="about-info-item"><span class="info-label">Email</span><a
-                                    href="mailto:mfauzanprmna@gmail.com">mfauzanprmna@gmail.com</a></div>
-                            <div class="about-info-item"><span class="info-label">Phone</span>+62 881-025-070-160</div>
-                            <div class="about-info-item"><span class="info-label">City</span>Depok, Indonesia</div>
-                            <div class="about-info-item"><span class="info-label">GitHub</span><a
-                                    href="https://github.com/mfauzanprmna" target="_blank">github.com/mfauzanprmna</a>
-                            </div>
-                            <div class="about-info-item"><span class="info-label">LinkedIn</span><a
-                                    href="https://www.linkedin.com/in/muhammad-fauzan-permana-821a5124b/"
-                                    target="_blank">LinkedIn Profile</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-box">
-                        <div class="stat-num">3+</div>
-                        <div class="stat-label">Years Coding</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-num">7+</div>
-                        <div class="stat-label">Projects Built</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-num">3</div>
-                        <div class="stat-label">Internships</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-num">7+</div>
-                        <div class="stat-label">Technologies</div>
-                    </div>
-                </div>
-            </div>
+    <section id="about" class="section section-shell">
+      <div class="section-label">01 / TENTANG SAYA</div>
+      <div class="about-layout">
+        <h2>Mengembangkan aplikasi<br>yang efektif dan mudah digunakan.</h2>
+        <div class="about-copy">
+          <p>Saya adalah pengembang web yang berpengalaman mengembangkan aplikasi untuk kebutuhan internal perusahaan, sistem akademik, dan proyek penelitian.</p>
+          <p>Saya terbiasa menggunakan PHP, Laravel, JavaScript, dan CodeIgniter, serta pernah berkontribusi dalam proyek di PT Kirana Megatara Tbk dan PT Phiraka Sinergi Indonesia. Saya senang mempelajari teknologi baru dan terus mengembangkan kemampuan.</p>
+          <div class="quick-facts">
+            <div><span>01</span><strong>Pengembangan Web</strong><small>Aplikasi web dan sistem</small></div>
+            <div><span>02</span><strong>Penelitian Terapan</strong><small>Proyek berbasis web</small></div>
+            <div><span>03</span><strong>Kolaborasi Tim</strong><small>Pengembangan bersama</small></div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Experience</div>
-                <h2 class="section-title">Where I've worked</h2>
-            </div>
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <div class="timeline-left">
-                        <div class="timeline-period">Aug 2025 – Feb 2026</div>
-                        <div class="timeline-dot"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <div class="exp-company">PT Kirana Megatara Tbk <span class="new-tag">Latest</span></div>
-                        <div class="exp-role">Web Developer — Internship</div>
-                        <ul class="exp-desc">
-                            <li>Developed and maintained web-based internal tools supporting operational workflows.</li>
-                            <li>Collaborated with cross-functional teams to gather requirements and deliver feature
-                                updates on schedule.</li>
-                            <li>Implemented front-end interfaces and back-end logic to improve system usability.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-left">
-                        <div class="timeline-period">Jul 2022 – Sep 2022</div>
-                        <div class="timeline-dot"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <div class="exp-company">PT Phiraka Sinergi Indonesia</div>
-                        <div class="exp-role">Junior Programmer</div>
-                        <ul class="exp-desc">
-                            <li>Assisted in maintaining and updating existing internal web applications built with PHP
-                                and MySQL.</li>
-                            <li>Identified and resolved bugs in legacy systems, improving reliability and reducing
-                                user-reported issues.</li>
-                            <li>Participated in code reviews and team discussions to ensure code quality and knowledge
-                                sharing.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-left">
-                        <div class="timeline-period">Nov 2021 – Apr 2022</div>
-                        <div class="timeline-dot"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <div class="exp-company">Ayodya Pala</div>
-                        <div class="exp-role">Back-End Developer — Internship</div>
-                        <ul class="exp-desc">
-                            <li>Improved the company's website design and developed a system to automatically generate
-                                digital certificates.</li>
-                            <li>Worked on backend architecture and database schema using Laravel, Bootstrap, and MySQL.
-                            </li>
-                            <li>Built a bulk participant import from Excel with automated PDF certificate generation.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+    <section id="experience" class="section section-muted">
+      <div class="section-shell">
+        <div class="section-label">02 / PENGALAMAN KERJA</div>
+        <div class="section-heading-row">
+          <h2>Pengalaman</h2>
+          <p>Pengalaman memelihara aplikasi web internal dan mengembangkan fitur untuk mendukung kebutuhan operasional.</p>
         </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">AGUSTUS 2025 — FEBRUARI 2026</div>
+            <div class="timeline-content">
+              <p class="role">Magang Pengembang Web</p>
+              <h3>PT Kirana Megatara Tbk</h3>
+              <ul>
+                <li>Mengembangkan dan memelihara aplikasi web internal untuk mendukung alur kerja operasional.</li>
+                <li>Menerapkan dan menyempurnakan fitur berbasis SQL Server, termasuk pengambilan data, penyaringan, dan pemrosesan formulir.</li>
+                <li>Meningkatkan alur kerja dengan AJAX dan tabel data, serta menelusuri masalah pada berbagai modul aplikasi.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">JULI 2022 — SEPTEMBER 2022</div>
+            <div class="timeline-content">
+              <p class="role">Programmer Junior</p>
+              <h3>PT Phiraka Sinergi Indonesia</h3>
+              <ul>
+                <li>Memelihara aplikasi internal berbasis PHP dan MySQL untuk modul operasional dan alur kerja bisnis.</li>
+                <li>Menganalisis dan memperbaiki masalah pada aplikasi lama serta menangani kendala berulang yang dilaporkan pengguna.</li>
+                <li>Bekerja sama dalam pembaruan fitur dan diskusi teknis untuk menjaga kode mudah dipelihara dan pekerjaan selesai tepat waktu.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">NOVEMBER 2021 — APRIL 2022</div>
+            <div class="timeline-content">
+              <p class="role">Magang Pengembang Back-End</p>
+              <h3>Ayodya Pala</h3>
+              <ul>
+                <li>Merancang logika aplikasi dan struktur basis data Laravel dan MySQL untuk pengelolaan data peserta serta proses sertifikasi.</li>
+                <li>Menerapkan pembuatan sertifikat PDF dengan templat yang dapat disesuaikan untuk data peserta dalam jumlah besar.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Projects</div>
-                <h2 class="section-title">Things I've built</h2>
-            </div>
-            <div class="projects-grid">
-
-                <div class="project-card">
-                    <div class="project-name">Inventory Restock Recommendation System</div>
-                    <div class="project-desc">Laravel Blade dashboard visualising restock recommendations driven by an
-                        XGBoost demand-forecasting API. Features CSV upload, forecast charts, and per-product summaries.
-                    </div>
-                    <div class="project-tags"><span class="tag">Laravel</span><span class="tag">Python</span><span
-                            class="tag">XGBoost</span><span class="tag">Bootstrap</span></div>
-                    <a href="https://github.com/mfauzanprmna/frontend-transtrack" target="_blank"
-                        class="project-link">View on GitHub →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">Kanban Task Management System</div>
-                    <div class="project-desc">Jira-style kanban board with RESTful APIs for board, task, and column
-                        management. Includes user authentication and role-based access control.</div>
-                    <div class="project-tags"><span class="tag">Laravel</span><span class="tag">REST API</span><span
-                            class="tag">MySQL</span></div>
-                    <a href="https://github.com/Muqniansyah/project-planner" target="_blank" class="project-link">View
-                        on GitHub →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">Automated Certificate Generator</div>
-                    <div class="project-desc">Backend system in Laravel to generate PDF certificates for dance studio
-                        participants. Supports bulk Excel import with automated PDF creation using custom templates.
-                    </div>
-                    <div class="project-tags"><span class="tag">Laravel</span><span class="tag">PDF</span><span
-                            class="tag">MySQL</span></div>
-                    <a href="https://github.com/AyodyaPala/Ayodya" target="_blank" class="project-link">View on GitHub
-                        →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">School Information Portal</div>
-                    <div class="project-desc">Responsive front-end pages using Laravel Blade & Bootstrap for a school
-                        portal covering news, galleries, and academic info. Optimised for cross-browser compatibility.
-                    </div>
-                    <div class="project-tags"><span class="tag">Laravel Blade</span><span
-                            class="tag">Bootstrap</span><span class="tag">MySQL</span></div>
-                    <a href="https://github.com/SIFOS-Starbhak/web-sekolah" target="_blank" class="project-link">View on
-                        GitHub →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">Web Kelas</div>
-                    <div class="project-desc">Class information web application built as a team project to manage and
-                        display academic information for students.</div>
-                    <div class="project-tags"><span class="tag">PHP</span><span class="tag">Bootstrap</span><span
-                            class="tag">MySQL</span></div>
-                    <a href="https://tiwaibi.vercel.app/" target="_blank" class="project-link">Live Demo →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">Student Attendance System</div>
-                    <div class="project-desc">Web-based student attendance tracking system built as a team project,
-                        streamlining the daily attendance process for educational institutions.</div>
-                    <div class="project-tags"><span class="tag">PHP</span><span class="tag">Laravel</span><span
-                            class="tag">MySQL</span></div>
-                    <a href="https://github.com/kukuhpradypta/MyPresence" target="_blank" class="project-link">View on
-                        GitHub →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">LiteraSense </div>
-                    <div class="project-desc">Web application developed as part of a lecturer-led thesis (skripsi)
-                        research project, focused on supporting literacy-related learning and assessment.</div>
-                    <div class="project-tags"><span class="tag">Web App</span><span class="tag">Research</span></div>
-                    <a href="https://bijak-ai.web.id/literasense/" target="_blank" class="project-link">Live Demo →</a>
-                </div>
-
-            </div>
-        </div>
+    <section id="projects" class="section section-shell">
+      <div class="section-label">03 / PROYEK</div>
+      <div class="section-heading-row">
+        <h2>Proyek pilihan</h2>
+        <p>Proyek pengembangan web, sistem manajemen tugas, dan pembelajaran digital.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <a class="project-image" href="https://github.com/mfauzanprmna/frontend-transtrack" target="_blank" rel="noreferrer" aria-label="Lihat repositori StockSense.AI">
+            <img src="img/Inventory.png" alt="Dasbor rekomendasi pengisian kembali stok StockSense.AI" loading="lazy">
+          </a>
+          <div class="project-body">
+            <p class="project-type">PENELITIAN TERAPAN · 2025</p>
+            <h3>StockSense.AI — Prediksi Inventaris dan Rekomendasi Pengisian Stok</h3>
+            <p>Membangun platform web menggunakan Laravel Blade yang terintegrasi dengan sistem prediksi berbasis Python untuk menampilkan prediksi penjualan dan rekomendasi pengisian kembali stok. Fitur unggah data, visualisasi, dan prediksi per produk mendukung perencanaan inventaris.</p>
+            <div class="tags"><span>Laravel Blade</span><span>Python</span><span>Prediksi</span></div>
+            <a class="project-link" href="https://github.com/mfauzanprmna/frontend-transtrack" target="_blank" rel="noreferrer">Lihat repositori <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-image" href="https://github.com/Muqniansyah/project-planner" target="_blank" rel="noreferrer" aria-label="Lihat repositori Kanban Board">
+            <img src="img/project-planner.png" alt="Dasbor Kanban Board untuk manajemen tugas" loading="lazy">
+          </a>
+          <div class="project-body">
+            <p class="project-type">APLIKASI WEB · 2024</p>
+            <h3>Kanban Board — Sistem Manajemen Tugas</h3>
+            <p>Mengembangkan aplikasi manajemen tugas menggunakan Laravel dengan fitur papan Kanban, kolom, dan pengelolaan tugas. Sistem autentikasi dan kontrol akses berbasis peran mengatur izin pengguna, sementara logika aplikasi dan basis data mendukung pelacakan tugas serta alur kerja.</p>
+            <div class="tags"><span>Laravel</span><span>Basis Data</span><span>Kontrol Akses</span></div>
+            <a class="project-link" href="https://github.com/Muqniansyah/project-planner" target="_blank" rel="noreferrer">Lihat repositori <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-image" href="https://bijak-ai.web.id/literasense/" target="_blank" rel="noreferrer" aria-label="Buka demo Literasense">
+            <img src="img/literasense/Screenshot 2026-11-17 132721.png" alt="Halaman utama platform Literasense untuk mengukur dan memahami literasi AI" loading="lazy">
+          </a>
+          <div class="project-body">
+            <p class="project-type">APLIKASI WEB · 2026</p>
+            <h3>Literasense — Skor Literasi AI Berbasis Web</h3>
+            <p>Mengembangkan platform Skor Literasi AI berbasis web menggunakan Laravel. Mengimplementasikan fitur-fitur inti dan antarmuka pengguna untuk mendukung aksesibilitas serta kemudahan penggunaan platform.</p>
+            <div class="tags"><span>Laravel</span><span>Literasi AI</span><span>Pendidikan</span></div>
+            <a class="project-link" href="https://bijak-ai.web.id/literasense/" target="_blank" rel="noreferrer">Buka demo <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-image" href="https://elderwise.id" target="_blank" rel="noreferrer" aria-label="Buka demo ElderWiSE">
+            <img src="img/elderwise/Screenshot 2026-11-17 132220.png" alt="Halaman utama platform pembelajaran ElderWiSE" loading="lazy">
+          </a>
+          <div class="project-body">
+            <p class="project-type">APLIKASI WEB · 2026</p>
+            <h3>ElderWiSE — Platform Pembelajaran Literasi Digital</h3>
+            <p>Mengembangkan aplikasi pembelajaran berbasis Laravel 12 dengan antarmuka sederhana dan mudah digunakan. Materi literasi digital dan pengenalan AI disusun dalam modul dan submodul, dilengkapi materi teks dan PDF, pengelolaan konten admin, kuis, serta pemantauan progres belajar.</p>
+            <div class="tags"><span>Laravel 12</span><span>Literasi Digital</span><span>Pembelajaran</span></div>
+            <a class="project-link" href="https://elderwise.id" target="_blank" rel="noreferrer">Buka demo <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Skills</div>
-                <h2 class="section-title">Tools & technologies</h2>
-            </div>
-            <div class="skills-layout">
-                <div>
-                    <div class="skill-group-label">Programming & Frameworks</div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>HTML / CSS</span><span class="skill-pct">90%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>Bootstrap</span><span class="skill-pct">85%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>Laravel</span><span class="skill-pct">75%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>PHP</span><span class="skill-pct">65%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:65%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>JavaScript</span><span class="skill-pct">60%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:60%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>Python</span><span class="skill-pct">60%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:60%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>React JS</span><span class="skill-pct">50%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:50%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>C++</span><span class="skill-pct">50%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:50%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="skill-group-label">Database & Tools</div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>MySQL</span><span class="skill-pct">80%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>Git / GitHub</span><span class="skill-pct">75%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-top"><span>Postman</span><span class="skill-pct">30%</span></div>
-                        <div class="skill-bar">
-                            <div class="skill-fill" style="width:30%"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-group-label" style="margin-top:2rem">Soft Skills</div>
-                    <div class="soft-skills">
-                        <span class="soft-tag">Team Collaboration</span>
-                        <span class="soft-tag">Time Management</span>
-                        <span class="soft-tag">Adaptability</span>
-                        <span class="soft-tag">Self-Learning</span>
-                    </div>
-
-                    <div class="skill-group-label" style="margin-top:2rem">Languages</div>
-                    <div class="lang-list">
-                        <div class="lang-item"><span>Indonesian</span> — Native</div>
-                        <div class="lang-item"><span>English</span> — Basic</div>
-                    </div>
-                </div>
-            </div>
+    <section id="skills" class="section section-muted">
+      <div class="section-shell">
+        <div class="section-label">04 / KEAHLIAN</div>
+        <div class="skills-layout">
+          <div>
+            <h2>Keahlian dan teknologi.</h2>
+            <p class="section-intro">Keahlian teknis dan nonteknis yang tercantum dalam CV.</p>
+          </div>
+          <div class="skill-groups">
+            <div><p class="skill-label">TEKNOLOGI</p><div class="skill-list"><span>PHP</span><span>Laravel</span><span>CodeIgniter</span><span>JavaScript</span><span>MySQL</span><span>Git</span><span>HTML</span><span>Bootstrap</span><span>CSS</span><span>React JS</span><span>Python</span></div></div>
+            <div><p class="skill-label">KEAHLIAN NONTEKNIS</p><div class="skill-list soft"><span>Kolaborasi Tim</span><span>Manajemen Waktu</span><span>Adaptabilitas</span><span>Belajar Mandiri</span></div></div>
+            <div><p class="skill-label">BAHASA</p><div class="skill-list"><span>Bahasa Indonesia · Bahasa Ibu</span><span>Bahasa Inggris · Dasar</span></div></div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Education</div>
-                <h2 class="section-title">Academic background</h2>
-            </div>
-            <div class="edu-grid" style="margin-bottom:2.5rem">
-                <div class="edu-card">
-                    <div class="edu-period">Sep 2022 - Jul 2026</div>
-                    <div class="edu-school">State Polytechnic of Jakarta (PNJ)</div>
-                    <div class="edu-major">Informatics Engineering (D4)</div>
-                    <div class="edu-note">Focused on software development, data structures, algorithms, and web
-                        technologies.</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-period">Sep 2019 - Jun 2022</div>
-                    <div class="edu-school">SMK Taruna Bhakti</div>
-                    <div class="edu-major">Software Engineering (RPL)</div>
-                    <div class="edu-note">Learned programming fundamentals, databases, and application development.
-                        Completed hands-on IT projects and internships.</div>
-                </div>
-            </div>
-
-            <div class="section-header" style="margin-top:3rem">
-                <div class="section-tag">Organization</div>
-                <h2 class="section-title">Organizational experience</h2>
-            </div>
-            <div class="edu-grid">
-                <div class="edu-card">
-                    <div class="edu-period">Feb 2024 - Feb 2025</div>
-                    <div class="edu-school">Computer Student Club, PNJ</div>
-                    <div class="edu-major">Public Relations Division (Humas)</div>
-                    <div class="edu-note">Coordinated external communications with guest speakers and partner
-                        institutions. Managed social media promotions for tech events and student workshops.</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-period">Jan 2023 - Sep 2023</div>
-                    <div class="edu-school">Computer Student Club, PNJ</div>
-                    <div class="edu-major">Software Development Division — Member</div>
-                    <div class="edu-note">Participated in internal software development initiatives and collaborative
-                        coding sessions. Supported peer learning in basic Laravel and Git.</div>
-                </div>
-            </div>
-        </div>
+    <section id="education" class="section section-shell">
+      <div class="section-label">05 / PENDIDIKAN</div>
+      <div class="education-grid">
+        <article><span>SEPTEMBER 2022 — JUNI 2026</span><h3>Politeknik Negeri Jakarta</h3><p>Sarjana Terapan Komputer</p><small>Jurusan Teknik Informatika dan Komputer · IPK 3,70/4,00<br>Fokus pada pengembangan perangkat lunak, teknologi web, dan sistem basis data.</small></article>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-name">Muhammad Fauzan Permana</div>
-            <div class="footer-sub">Web Developer · Depok, Indonesia</div>
-            <div class="footer-links">
-                <a href="mailto:mfauzanprmna@gmail.com">Email</a>
-                <a href="https://github.com/mfauzanprmna" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/muhammad-fauzan-permana-821a5124b/" target="_blank">LinkedIn</a>
-                <a href="https://www.instagram.com/mfauzanprmna/" target="_blank">Instagram</a>
-                <a href="https://wa.me/62881025070160" target="_blank">WhatsApp</a>
-            </div>
-            <div class="footer-copy">© 2025 Muhammad Fauzan Permana</div>
+    <section id="contact" class="contact section-shell">
+      <div class="contact-inner">
+        <p class="eyebrow">06 / KONTAK</p>
+        <h2>Mari berkolaborasi.</h2>
+        <p>Hubungi saya untuk membahas peluang kerja sama atau proyek pengembangan web.</p>
+        <a class="contact-email" href="mailto:mfauzanprmna@gmail.com">mfauzanprmna@gmail.com <span aria-hidden="true">↗</span></a>
+        <div class="contact-links">
+          <a href="tel:+62881025070160">+62 881025070160</a>
+          <a href="https://github.com/mfauzanprmna" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/muhammad-fauzan-permana-821a5124b/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <span>Jawa Barat, Indonesia</span>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
+  <footer><span>© 2026 Muhammad Fauzan Permana</span><span>Dirancang dan dibuat dengan HTML · CSS · JavaScript</span></footer>
+  <script src="app.js"></script>
 </body>
-
 </html>
