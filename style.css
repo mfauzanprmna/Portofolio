@@ -551,10 +551,31 @@ img {
 
 .mini-grid article {
   min-height: 215px;
+  overflow: hidden;
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
+}
+
+.mini-project-image {
+  display: block;
+  height: 140px;
+  margin: -22px -22px 14px;
+  overflow: hidden;
+  background: #e8eee8;
+}
+
+.mini-project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .35s ease;
+}
+
+.mini-project-image:hover img {
+  transform: scale(1.025);
 }
 
 .mini-number {
